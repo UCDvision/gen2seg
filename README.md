@@ -1,4 +1,4 @@
-# gen2seg: Generative Models Enable Generalizable Instance Segmentation
+# [ICLR 2026] gen2seg: Generative Models Enable Generalizable Instance Segmentation
 [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/reachomk/gen2seg)
 
 ### [Project Page](https://reachomk.github.io/gen2seg) | [Paper](https://arxiv.org/abs/2505.15263)
@@ -7,6 +7,7 @@
  [Om Khangaonkar](https://reachomk.github.io),
  [Hamed Pirsiavash](https://web.cs.ucdavis.edu/~hpirsiav/)<br>
  UC Davis <br>
+ ICLR 2026 <br>
 <img src='assets/teaser.png'/>
 
 ## Pretrained Models
