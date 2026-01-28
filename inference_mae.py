@@ -15,7 +15,7 @@ import numpy as np
 
 
 # Example usage: Update these paths as needed.
-image_path = "FILL THIS OUT"       # Path to the input image.
+image_path = "/nfs_share3/om/diffusion-e2e-ft/plane1.jpg"       # Path to the input image, change as needed.
 output_path = "seg_mae.png"     # Path to save the output image.
 device = "cuda:0"  # Change to "cpu" if no GPU is available.
 

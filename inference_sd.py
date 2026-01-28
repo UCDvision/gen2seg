@@ -12,7 +12,7 @@ import numpy as np
 import time
 
 # Load the image
-image_path =  'FILL THIS IN'
+image_path =  '/nfs_share3/om/diffusion-e2e-ft/plane1.jpg' # change this path
 image = Image.open(image_path).convert("RGB")
 orig_res = image.size
 output_path = "seg.png" 

@@ -14,7 +14,7 @@ from einops import rearrange
 
 from diffusers import DiffusionPipeline
 from diffusers.utils import BaseOutput, logging
-from transformers import AutoImageProcessor
+from transformers import AutoImageProcessor, ViTMAEForPreTraining
 
 logger = logging.get_logger(__name__)  # pylint: disable=invalid-name
 
@@ -49,6 +49,8 @@ class gen2segMAEInstancePipeline(DiffusionPipeline):
     """
     def __init__(self, model, image_processor):
         super().__init__()
+        if isinstance(model, str):
+            model = ViTMAEForPreTraining.from_pretrained(model)
         self.register_modules(model=model, image_processor=image_processor)
         self.model = model
         self.image_processor = image_processor

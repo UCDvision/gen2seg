@@ -36,7 +36,7 @@ from torch.optim.lr_scheduler import LambdaLR
 # Custom modules
 from dataloaders.load import *
 from util.noise import pyramid_noise_like
-from util.loss import ScaleAndShiftInvariantLoss, AngularLoss, RGBSemanticLoss, InstanceSegmentationLoss
+from util.loss import InstanceSegmentationLoss
 from util.unet_prep import replace_unet_conv_in
 from util.lr_scheduler import IterExponential
 
@@ -282,21 +282,12 @@ def main():
         with open(args_path, 'w') as file:
             file.write(args_str)
 
-    if args.noise_type is None:
-        logger.warning("Noise type is `None`. This setting is only meant for checkpoints without image conditioning (Stable Diffusion).")
-
     # Load model components
     noise_scheduler = DDPMScheduler.from_pretrained(args.pretrained_model_name_or_path, subfolder="scheduler")
     tokenizer       = CLIPTokenizer.from_pretrained(args.pretrained_model_name_or_path, subfolder="tokenizer", revision=args.revision)
     text_encoder    = CLIPTextModel.from_pretrained(args.pretrained_model_name_or_path, subfolder="text_encoder", revision=args.revision, variant=args.variant)
     vae            = AutoencoderKL.from_pretrained(args.pretrained_model_name_or_path, subfolder="vae", revision=args.revision, variant=args.variant)
     unet           = UNet2DConditionModel.from_pretrained(args.pretrained_model_name_or_path, subfolder="unet", revision=None)
-
-    # Modify UNet input if noise_type is not None
-    if args.noise_type is not None:
-        if unet.config['in_channels'] != 8:
-            replace_unet_conv_in(unet, repeat=2)
-            logger.info("Unet conv_in layer replaced for (RGB + condition) input")
 
     # Freeze VAE and CLIP (text encoder), train only UNet
     vae.requires_grad_(False)
