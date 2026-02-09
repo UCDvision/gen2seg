@@ -86,10 +86,10 @@ Please let me know if you want more details or have any questions.
 ##  Citation
 Please cite our paper if it was helpful or you liked it. 
 ```
-@article{khangaonkar2025gen2seg,
+@inproceedings{khangaonkar2025gen2seg,
       title={gen2seg: Generative Models Enable Generalizable Instance Segmentation}, 
       author={Om Khangaonkar and Hamed Pirsiavash},
-      year={2025},
-      journal={arXiv preprint arXiv:2505.15263}
+      booktitle={The Fourteenth International Conference on Learning Representations},
+      year={2026}
 }
 ```
